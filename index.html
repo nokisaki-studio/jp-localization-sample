@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translation vs. Localization — Japanese Landing Page Sample</title>
+<meta name="description" content="A three-step sample showing how a US landing page changes when it is localized for Japanese buyers instead of just translated.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-view="original">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kettle" viewBox="0 0 400 400">
+    <ellipse cx="210" cy="362" rx="124" ry="10" style="fill:rgba(0,0,0,.08)"/>
+    <path d="M150 296 C112 300 104 262 108 232 C112 200 92 178 60 168" style="fill:none;stroke:var(--k-body);stroke-width:10;stroke-linecap:round"/>
+    <path d="M60 168 L47 165" style="fill:none;stroke:var(--k-body);stroke-width:7;stroke-linecap:round"/>
+    <path d="M47 173 C44 212 46 256 51 304" style="fill:none;stroke:var(--k-water);stroke-width:3;stroke-linecap:round;opacity:.85"/>
+    <path d="M258 194 C320 190 324 302 272 306" style="fill:none;stroke:var(--k-body);stroke-width:14;stroke-linecap:round"/>
+    <path d="M302 224 C309 250 307 272 298 290" style="fill:none;stroke:var(--k-accent);stroke-width:17;stroke-linecap:round"/>
+    <rect x="116" y="320" width="188" height="32" rx="11" style="fill:var(--k-base)"/>
+    <rect x="178" y="328" width="64" height="16" rx="4" style="fill:#0d1114"/>
+    <path d="M142 316 L160 184 Q162 170 176 170 L244 170 Q258 170 260 184 L278 316 Q279 324 270 324 L150 324 Q141 324 142 316 Z" style="fill:var(--k-body)"/>
+    <path d="M174 188 L162 300" style="fill:none;stroke:rgba(255,255,255,.16);stroke-width:7;stroke-linecap:round"/>
+    <path d="M166 170 Q210 146 254 170 Z" style="fill:var(--k-body)"/>
+    <rect x="160" y="165" width="100" height="8" rx="4" style="fill:var(--k-accent)"/>
+    <rect x="202" y="139" width="16" height="15" rx="5" style="fill:var(--k-accent)"/>
+    <path d="M196 120 c-9 -12 9 -20 0 -32 M222 116 c-9 -12 9 -20 0 -32" style="fill:none;stroke:rgba(120,110,100,.35);stroke-width:3;stroke-linecap:round"/>
+  </symbol>
+</svg>
+
+<header class="demo-bar">
+  <div class="demo-bar__inner">
+    <div class="demo-title">
+      <strong>Translation vs. Localization</strong>
+      <span>Japanese landing page sample · fictional brand · by <span class="author">Nokisaki Studio</span></span>
+    </div>
+    <div class="view-switch" role="group" aria-label="Choose a version">
+      <button type="button" data-view="original" aria-pressed="true"><span class="num">1</span><span class="l-long">English original</span><span class="l-short">Original</span></button>
+      <button type="button" data-view="literal" aria-pressed="false"><span class="num">2</span><span class="l-long">Faithful translation</span><span class="l-short">Translated</span></button>
+      <button type="button" data-view="localized" aria-pressed="false"><span class="num">3</span><span class="l-long">Localized for Japan</span><span class="l-short">Localized</span></button>
+    </div>
+    <button class="notes-toggle" type="button" aria-controls="notes" aria-expanded="true">Notes <span class="notes-count"></span></button>
+  </div>
+  <div class="view-caption" aria-live="polite">
+    <p data-caption="original"><span><b>Step 1.</b> The US original: short, punchy, image-led.</span> <button type="button" class="next" data-go="literal">Next: translate it faithfully →</button></p>
+    <p data-caption="literal" hidden><span><b>Step 2.</b> Every sentence is correctly translated, yet this page would underperform in Japan. <span class="key key--lit">Red pins</span> show why.</span> <button type="button" class="next" data-go="localized">Next: localize it →</button></p>
+    <p data-caption="localized" hidden><span><b>Step 3.</b> Rebuilt for Japanese buyers. <span class="key key--ja">Blue pins</span> explain each change.</span> <button type="button" class="next" data-go="original">Start over ↺</button></p>
+  </div>
+</header>
+
+<div class="stage">
+  <main class="pages">
+
+    <!-- ===================== 1 & 2: English original / faithful translation ===================== -->
+    <article id="page-en" class="lp-en" lang="en">
+      <div class="en-announce" data-lit="50ドル以上のご注文で送料無料・30日間返品可能">Free shipping on orders over $50 · 30-day returns</div>
+
+      <nav class="en-nav" aria-label="Store">
+        <span class="en-logo">TIDEWELL</span>
+        <span class="en-links">
+          <a href="#" data-demo data-lit="ショップ">Shop</a>
+          <a href="#" data-demo data-lit="ブランドストーリー">Our story</a>
+          <a href="#" data-demo data-lit="レビュー">Reviews</a>
+        </span>
+        <a href="#" class="en-cart" data-demo data-lit="カート (0)">Cart (0)</a>
+      </nav>
+
+      <section class="en-hero">
+        <div class="en-hero__copy">
+          <p class="en-eyebrow" data-lit="ザ・ポアケトル">The Pour Kettle</p>
+          <h1 class="en-h1" data-pin="lit-headline" data-lit="本気で淹れよう。">Brew like you mean it.</h1>
+          <p class="en-sub" data-lit="精密な温度管理。思いどおりの注ぎ。こだわりのコーヒー好きが信頼するケトル。">Precision temperature. Total pour control. The kettle serious coffee people swear by.</p>
+          <div class="en-buy" data-pin="lit-price">
+            <span class="en-price">$129</span>
+            <a href="#" class="en-btn" data-demo data-lit="今すぐ購入">Shop now</a>
+          </div>
+          <p class="en-proof" data-lit="★★★★★ 10,000人以上のホームバリスタが愛用">★★★★★ Loved by 10,000+ home baristas</p>
+        </div>
+        <div class="en-hero__visual">
+          <svg class="kettle kettle--en" viewBox="0 0 400 400" role="img" aria-label="Tidewell Pour kettle illustration">
+            <use href="#kettle"/>
+            <text x="210" y="340.5" text-anchor="middle" class="kettle__temp">200°F</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="en-features">
+        <div class="en-feature" data-pin="lit-fahrenheit">
+          <h3 data-lit="温度を合わせる">Dial it in</h3>
+          <p data-lit="140°F〜212°Fの範囲で温度を設定し、1度単位でキープします。">Set any temp from 140°F to 212°F and hold it to the degree.</p>
+        </div>
+        <div class="en-feature">
+          <h3 data-lit="プロのように注ぐ">Pour like a pro</h3>
+          <p data-lit="細いグースネックの注ぎ口で、湯量を安定してコントロールできます。">A slim gooseneck spout gives you a steady, controllable stream.</p>
+        </div>
+        <div class="en-feature" data-pin="lit-detail">
+          <h3 data-lit="すぐに使える">Fast &amp; ready</h3>
+          <p data-lit="約4分で沸騰。保温は60分間。">Boils in about 4 minutes. Keep-warm holds for 60.</p>
+        </div>
+      </section>
+
+      <section class="en-quote">
+        <blockquote data-pin="lit-review">
+          <p data-lit="「まさにゲームチェンジャー。朝の一杯がこんなにおいしくなるなんて。」">“Total game changer. My morning cup has never tasted this good.”</p>
+          <cite data-lit="— サラ・K（オレゴン州ポートランド）">— Sarah K., Portland, OR</cite>
+        </blockquote>
+        <p class="en-specs" data-pin="lit-120v" data-lit="0.9L・1200W・120V・マットブラック／ブラッシュドスチール">0.9 L · 1200 W · 120 V · Matte black or brushed steel</p>
+      </section>
+
+      <section class="en-story">
+        <div class="en-story__inner">
+          <h2 data-pin="lit-story" data-lit="ポートランド生まれ。こだわり派のために。">Born in Portland. Built for the obsessed.</h2>
+          <p data-lit="Tidewellはガレージから始まりました。目指したのは、主張しすぎず、コーヒーの魅力を引き立てるケトルです。">We started Tidewell in a garage with one goal: a kettle that gets out of your way so the coffee can shine.</p>
+          <p class="en-guarantee" data-lit="30日間返金保証・1年保証">30-day money-back guarantee · 1-year warranty</p>
+        </div>
+      </section>
+
+      <section class="en-final">
+        <h2 data-lit="毎日の習慣を、アップグレードしませんか？">Ready to upgrade your ritual?</h2>
+        <div class="en-final__cta" data-pin="lit-pay">
+          <a href="#" class="en-btn" data-demo data-lit="今すぐ手に入れる — $129">Get yours — $129</a>
+        </div>
+      </section>
+
+      <footer class="en-footer" data-pin="lit-footer">
+        <span>© 2026 Tidewell Coffee Co.</span>
+        <span><a href="#" data-demo data-lit="プライバシー">Privacy</a> · <a href="#" data-demo data-lit="利用規約">Terms</a></span>
+      </footer>
+    </article>
+
+    <!-- ===================== 3: Localized for Japan ===================== -->
+    <article id="page-ja" class="lp-ja" lang="ja" hidden>
+      <div class="ja-col">
+
+        <div class="ja-announce">
+          <p class="ja-announce__coupon">＼ LINE友だち追加で <strong>500円OFF</strong> クーポン ／</p>
+          <p class="ja-announce__ship" data-pin="ja-ship">5,500円（税込）以上で送料無料｜最短翌日お届け</p>
+        </div>
+
+        <header class="ja-header">
+          <span class="ja-logo">TIDEWELL<small>タイドウェル</small></span>
+          <button type="button" class="ja-cart" data-demo>カート</button>
+        </header>
+
+        <section class="ja-hero">
+          <p class="ja-hero__label">ハンドドリップ専用 電気ケトル</p>
+          <h1 data-pin="ja-headline">その一杯を、<br>1℃で仕上げる。</h1>
+          <p class="ja-lead" data-pin="ja-type">お湯の温度を1℃単位で設定できる細口ケトル。いつもの豆が、もう一段おいしくなります。</p>
+          <div class="ja-hero__visual">
+            <svg class="kettle kettle--ja" viewBox="0 0 400 400" role="img" aria-label="Tidewell Pour 電気ケトルのイラスト">
+              <use href="#kettle"/>
+              <text x="210" y="340.5" text-anchor="middle" class="kettle__temp">93℃</text>
+            </svg>
+          </div>
+          <ul class="ja-badges" data-pin="ja-pse">
+            <li>AC100V<br>PSE適合</li>
+            <li>1年保証<br>国内サポート</li>
+            <li>30日間<br>返品OK</li>
+          </ul>
+          <div class="ja-buy" data-pin="ja-price">
+            <p class="ja-buy__name">Tidewell Pour 電気ケトル 0.9L</p>
+            <p class="ja-buy__price"><span class="yen">19,800</span>円<small>（税込）</small></p>
+            <p class="ja-buy__ship">送料無料・最短翌日お届け</p>
+            <button type="button" class="ja-cta" data-demo>カートに入れる</button>
+            <ul class="ja-pay" data-pin="ja-pay" aria-label="お支払い方法">
+              <li>クレジットカード</li><li>コンビニ払い</li><li>PayPay</li><li>Amazon Pay</li><li>後払い</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="ja-sec ja-problem">
+          <h2 data-pin="ja-problem">こんなお悩み、<br>ありませんか？</h2>
+          <ul class="ja-checks">
+            <li>同じ豆なのに、日によって味がブレる</li>
+            <li>やかんだと、注ぐ量を調整しにくい</li>
+            <li>沸騰したお湯を冷ますのが面倒</li>
+          </ul>
+          <p class="ja-bridge">その原因は、<strong>「お湯の温度」</strong>と<strong>「注ぎ方」</strong>かもしれません。</p>
+        </section>
+
+        <section class="ja-sec ja-features">
+          <h2 data-pin="ja-detail"><span class="ja-h2-sub">Tidewell Pourが選ばれる</span>3つの理由</h2>
+          <ol class="ja-reasons">
+            <li>
+              <span class="ja-reason__no">01</span>
+              <h3>60〜100℃を1℃単位で設定</h3>
+              <p>浅煎りは高め、深煎りは低めに。豆に合わせた温度で淹れられ、設定温度のまま最大60分保温します。</p>
+            </li>
+            <li>
+              <span class="ja-reason__no">02</span>
+              <h3>細口ノズルで、湯量を思いのままに</h3>
+              <p>注ぎ口の先端は内径約8mm。ドリッパーの中心へ、細く安定したお湯を落とせます。</p>
+            </li>
+            <li>
+              <span class="ja-reason__no">03</span>
+              <h3>800mlが約4分で沸騰</h3>
+              <p>忙しい朝でも待たせません。空だき防止と自動電源オフで、安心してお使いいただけます。</p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="ja-sec ja-steps">
+          <h2>使い方は、かんたん3ステップ</h2>
+          <ol class="ja-steps__list">
+            <li><b>1</b>水を入れる</li>
+            <li><b>2</b>温度を選んで<br>ボタンを押す</li>
+            <li><b>3</b>お知らせ音が<br>鳴ったら注ぐ</li>
+          </ol>
+        </section>
+
+        <section class="ja-sec ja-compare">
+          <h2 data-pin="ja-compare">ふつうのケトルとの違い</h2>
+          <div class="ja-table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col"><span class="sr">項目</span></th><th scope="col" class="is-us">Tidewell<br>Pour</th><th scope="col">一般的な<br>電気ケトル</th><th scope="col">やかん</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">温度設定</th><td class="is-us">◎<br>1℃単位</td><td>×<br>沸騰のみ</td><td>×</td></tr>
+                <tr><th scope="row">保温</th><td class="is-us">◎<br>最大60分</td><td>×</td><td>×</td></tr>
+                <tr><th scope="row">注ぎやすさ</th><td class="is-us">◎<br>細口ノズル</td><td>△</td><td>△</td></tr>
+                <tr><th scope="row">沸騰まで<br>（800ml）</th><td class="is-us">約4分</td><td>約4〜5分</td><td>火力による</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ja-note">※当社調べ（このページの数値はすべて架空のサンプルです）</p>
+        </section>
+
+        <section class="ja-sec ja-reviews">
+          <h2 data-pin="ja-reviews">お客様の声</h2>
+          <p class="ja-rating"><span class="stars" aria-hidden="true">★★★★★</span> <b>4.8</b>（レビュー1,284件）</p>
+          <ul class="ja-review-list">
+            <li>
+              <p class="r-stars" aria-label="星5つ">★★★★★</p>
+              <h3>浅煎りの酸味がきれいに出るように</h3>
+              <p>これまでは沸騰したお湯を少し冷ましてから淹れていました。今は温度を選んで押すだけ。浅煎りの豆の印象がまったく変わりました。</p>
+              <p class="r-who">30代・女性・東京都</p>
+            </li>
+            <li>
+              <p class="r-stars" aria-label="星5つ">★★★★★</p>
+              <h3>注ぎやすさが段違い</h3>
+              <p>細く注げるので、蒸らしがうまくいくようになりました。見た目もすっきりしていて、キッチンに出しっぱなしにしています。</p>
+              <p class="r-who">40代・男性・大阪府</p>
+            </li>
+            <li>
+              <p class="r-stars" aria-label="星4つ">★★★★☆</p>
+              <h3>父の還暦祝いに贈りました</h3>
+              <p>のしを付けてもらえたので、そのまま渡せました。電源コードがもう少し長いとうれしいです。</p>
+              <p class="r-who">20代・女性・福岡県</p>
+            </li>
+          </ul>
+          <p class="ja-note">※掲載のレビューは架空のサンプルです</p>
+        </section>
+
+        <section class="ja-sec ja-gift">
+          <h2 data-pin="ja-gift">贈り物にも<br>選ばれています</h2>
+          <p>ギフトラッピングとのし掛けを<strong>無料</strong>で承ります。新築祝い・結婚祝い・内祝いなどにどうぞ。メッセージカードもお付けできます。</p>
+          <ul class="ja-gift__tags"><li>ギフトラッピング無料</li><li>のし対応</li><li>メッセージカード</li></ul>
+        </section>
+
+        <section class="ja-sec ja-story">
+          <h2 data-pin="ja-story">日本の喫茶文化に<br>学んだケトル</h2>
+          <p>Tidewell（タイドウェル）は、米国オレゴン州ポートランドのコーヒーブランドです。一杯ずつ丁寧に淹れる日本のハンドドリップ文化に影響を受け、「注ぐ道具」を一から設計しました。</p>
+        </section>
+
+        <section class="ja-sec ja-support">
+          <h2 data-pin="ja-support">安心のお届けとサポート</h2>
+          <dl class="ja-support__list">
+            <div><dt>お届け</dt><dd>平日14時までのご注文で最短翌日お届け。お届け時間帯も指定できます。</dd></div>
+            <div><dt>送料</dt><dd>5,500円（税込）以上で無料。未満の場合は660円（税込）です。</dd></div>
+            <div><dt>保証</dt><dd>お届けから1年間のメーカー保証。修理・交換は国内で対応します。</dd></div>
+            <div><dt>サポート</dt><dd>国内窓口　平日10:00〜18:00（電話・メール・LINE）</dd></div>
+            <div><dt>領収書</dt><dd>適格請求書（インボイス）対応の領収書を発行できます。</dd></div>
+          </dl>
+        </section>
+
+        <section class="ja-sec ja-faq">
+          <h2 data-pin="ja-faq">よくあるご質問</h2>
+          <details>
+            <summary>海外ブランドの製品ですが、日本のコンセントでそのまま使えますか？</summary>
+            <p>はい。日本向けモデルはAC100V（50/60Hz）仕様で、PSEマークを取得しています。変圧器は必要ありません。</p>
+          </details>
+          <details>
+            <summary>保証期間はどのくらいですか？</summary>
+            <p>お届けから1年間です。故障の際は、国内サポート窓口で修理・交換を承ります。</p>
+          </details>
+          <details>
+            <summary>領収書は発行できますか？</summary>
+            <p>ご注文履歴から、適格請求書（インボイス）の要件を満たした領収書をダウンロードできます。</p>
+          </details>
+          <details>
+            <summary>注文してから何日で届きますか？</summary>
+            <p>平日14時までのご注文は、最短で翌日にお届けします（一部地域を除く）。</p>
+          </details>
+          <details>
+            <summary>返品はできますか？</summary>
+            <p>商品到着後30日以内であれば承ります。条件は「特定商取引法に基づく表記」をご確認ください。</p>
+          </details>
+          <details>
+            <summary>支払い方法は何がありますか？</summary>
+            <p>クレジットカード、コンビニ払い、PayPay、Amazon Pay、後払いがご利用いただけます。</p>
+          </details>
+        </section>
+
+        <section class="ja-sec ja-final">
+          <h2>毎日の一杯を、<br>もう一段おいしく。</h2>
+          <div class="ja-buy ja-buy--final">
+            <p class="ja-buy__name">Tidewell Pour 電気ケトル 0.9L</p>
+            <p class="ja-buy__price"><span class="yen">19,800</span>円<small>（税込）</small></p>
+            <p class="ja-buy__ship">送料無料・最短翌日お届け</p>
+            <button type="button" class="ja-cta" data-demo>カートに入れる</button>
+          </div>
+          <div class="ja-line" data-pin="ja-line">
+            <p>ご購入前のご相談は、LINEでも受け付けています</p>
+            <button type="button" class="ja-line__btn" data-demo>LINEで質問する</button>
+            <p class="ja-line__note">友だち追加で500円OFFクーポンをプレゼント</p>
+          </div>
+        </section>
+
+        <footer class="ja-footer">
+          <details class="ja-tokusho" data-pin="ja-tokusho">
+            <summary>特定商取引法に基づく表記</summary>
+            <table>
+              <tr><th scope="row">販売業者</th><td>株式会社タイドウェル・ジャパン（架空）</td></tr>
+              <tr><th scope="row">運営統括責任者</th><td>山田 太郎（架空）</td></tr>
+              <tr><th scope="row">所在地</th><td>東京都〇〇区〇〇 1-2-3（架空）</td></tr>
+              <tr><th scope="row">電話番号</th><td>03-0000-0000（架空）</td></tr>
+              <tr><th scope="row">メールアドレス</th><td>support@example.com</td></tr>
+              <tr><th scope="row">販売価格</th><td>各商品ページに税込価格で表示</td></tr>
+              <tr><th scope="row">商品代金以外の必要料金</th><td>送料（5,500円以上で無料、未満は660円）、コンビニ払い手数料、後払い手数料</td></tr>
+              <tr><th scope="row">支払方法</th><td>クレジットカード、コンビニ払い、PayPay、Amazon Pay、後払い</td></tr>
+              <tr><th scope="row">引渡時期</th><td>ご注文から1〜3営業日以内に発送</td></tr>
+              <tr><th scope="row">返品・交換</th><td>商品到着後30日以内に承ります。お客様都合の返品送料はお客様負担、初期不良の場合は当社負担です。</td></tr>
+            </table>
+          </details>
+          <p class="ja-footer__links"><a href="#" data-demo>会社概要</a>｜<a href="#" data-demo>プライバシーポリシー</a></p>
+          <p class="ja-copy">© 2026 Tidewell Coffee Co.（架空のブランドです）</p>
+        </footer>
+
+        <div class="ja-sticky">
+          <span class="ja-sticky__price">19,800円<small>（税込）</small></span>
+          <button type="button" class="ja-cta" data-demo>カートに入れる</button>
+        </div>
+      </div>
+    </article>
+
+    <section class="about">
+      <h2>About this sample</h2>
+      <p>Tidewell is a fictional brand, made up to show the difference between translating a landing page and localizing it for Japan. Nothing is sold here, and the buttons do nothing.</p>
+      <p>Hand-built in plain HTML, CSS and JavaScript: no framework, no tracking. The Japanese copy was drafted with AI assistance under the direction of a native Japanese speaker.</p>
+      <p>Want the same review for your own page? Send me a link to it on Upwork.</p>
+    </section>
+  </main>
+
+  <aside id="notes" class="notes" aria-label="Notes">
+    <div class="notes__head">
+      <h2 class="notes__title">Notes</h2>
+      <button type="button" class="notes__close" aria-label="Close notes">✕</button>
+    </div>
+    <ol class="notes__list"></ol>
+  </aside>
+</div>
+
+<div class="sheet-backdrop" hidden></div>
+<div class="toast" role="status" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
