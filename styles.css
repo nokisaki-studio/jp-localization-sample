@@ -4,8 +4,8 @@
   --chrome-fg: #e8edf2;
   --chrome-muted: #98a6b3;
   --chrome-accent: #8ccbff;
-  --pin-lit: #e5484d;
-  --pin-ja: #2f7cf6;
+  --pin-lit: #d13438;
+  --pin-ja: #1f6fe5;
 
   --en-ink: #1c2630;
   --en-cream: #f4eee4;
@@ -16,9 +16,12 @@
   --ja-bg: #fffdf9;
   --ja-paper: #f6efe6;
   --ja-accent: #a65f36;
-  --ja-cta: #d9622b;
-  --ja-cta-shadow: #a9461a;
-  --ja-line: #06c755;
+  --ja-accent-text: #94532e; /* accent for small text: 4.5:1 or more on the paper background */
+  --ja-cta: #bf541f;         /* white text 4.66:1 */
+  --ja-cta-shadow: #8f3a14;
+  --ja-ok: #2a7d4d;          /* "added to cart": white text 5.07:1 */
+  --ja-ok-shadow: #1d5a37;
+  --ja-line: #00873c;        /* darker than LINE's brand green (#06c755, 2.26:1) so the white text reads; a real store would use LINE's official button */
   --ja-muted: #6f665d;
   --ja-border: #e6dccf;
 
@@ -28,7 +31,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* keep focused and linked elements clear of the sticky demo bar (top) and the sticky buy bar (bottom) */
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--bar-h) + 12px); scroll-padding-bottom: 96px; }
+h1, h2, h3 { text-wrap: balance; }
+button, summary, [role="slider"] { touch-action: manipulation; }
 body {
   margin: 0;
   background: var(--page-bg);
@@ -72,7 +78,8 @@ body[data-view="original"] .notes-toggle { visibility: hidden; }
 .view-caption { border-top: 1px solid rgba(255,255,255,.08); padding: 8px 20px; font-size: 13px; color: var(--chrome-muted); }
 .view-caption p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; column-gap: 14px; row-gap: 2px; }
 .view-caption b { color: var(--chrome-fg); font-weight: 600; }
-.view-caption .next { background: none; border: 0; padding: 0; color: var(--chrome-accent); font-size: 13px; font-weight: 600; }
+.view-caption .next { background: none; border: 0; padding: 5px 0; color: var(--chrome-accent); font-size: 13px; font-weight: 600; }
+.view-caption .next:hover { color: #b8e0ff; text-decoration: underline; }
 .key { font-weight: 600; }
 .key--lit { color: #ff8a8d; }
 .key--ja { color: #8cb8ff; }
@@ -100,6 +107,7 @@ body[data-view="original"] .notes { display: none; }
   padding: 12px 10px; border-radius: 10px; cursor: pointer; outline: none;
 }
 .note:hover, .note:focus-visible { background: #f5f7fa; }
+.note:focus-visible { outline: 2px solid var(--pin-ja); outline-offset: -2px; }
 .note.is-active { background: #eef4ff; }
 .note--lit.is-active { background: #fff0f0; }
 .note__num {
@@ -118,8 +126,8 @@ body[data-view="original"] .notes { display: none; }
 /* ============ Pins ============ */
 .has-pin { position: relative; scroll-margin-top: calc(var(--bar-h) + 40px); }
 .pin {
-  position: absolute; top: -11px; right: -18px; z-index: 5;
-  display: grid; place-items: center; width: 22px; height: 22px; padding: 0;
+  position: absolute; top: -12px; right: -19px; z-index: 5;
+  display: grid; place-items: center; width: 24px; height: 24px; padding: 0;
   border: 2px solid #fff; border-radius: 50%; color: #fff;
   font: 600 12px/1 Inter, sans-serif; letter-spacing: 0; text-indent: 0;
   box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: transform .15s;
@@ -217,9 +225,10 @@ body[data-view="literal"] .has-pin {
 .ja-logo { display: flex; flex-direction: column; font-family: Fraunces, Georgia, serif; font-size: 17px; font-weight: 700; letter-spacing: .18em; line-height: 1.15; }
 .ja-logo small { color: var(--ja-muted); font-family: "Noto Sans JP", sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .2em; }
 .ja-cart { padding: 5px 14px; border: 1px solid var(--ja-border); border-radius: 999px; background: none; color: var(--ja-ink); font-size: 13px; }
+.ja-cart:hover { border-color: var(--ja-accent); }
 
 .ja-hero { padding: 28px 20px 36px; background: linear-gradient(180deg, var(--ja-paper) 0%, var(--ja-bg) 100%); }
-.ja-hero__label { display: inline-block; margin: 0 0 12px; padding: 2px 12px; border: 1px solid var(--ja-accent); border-radius: 999px; color: var(--ja-accent); font-size: 13px; font-weight: 500; }
+.ja-hero__label { display: inline-block; margin: 0 0 12px; padding: 2px 12px; border: 1px solid var(--ja-accent); border-radius: 999px; color: var(--ja-accent-text); font-size: 13px; font-weight: 500; }
 .ja-hero h1 { margin: 0 0 14px; font-family: "Noto Serif JP", serif; font-size: clamp(30px, 8.4vw, 40px); font-weight: 700; line-height: 1.45; }
 .ja-lead { margin: 0 0 20px; font-size: 15.5px; }
 .ja-hero__visual { margin: 0 0 18px; padding: 8px; border-radius: 20px; background: radial-gradient(circle at 50% 45%, #fff 0, #ece1d1 70%); }
@@ -241,10 +250,56 @@ body[data-view="literal"] .has-pin {
 .ja-pay { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
 .ja-pay li { padding: 1px 8px; border: 1px solid var(--ja-border); border-radius: 6px; background: #fbf8f3; color: var(--ja-muted); font-size: 11.5px; letter-spacing: .02em; }
 
+/* Color switch (Segmented control): the highlight squashes as it slides and lands with a small overshoot */
+.ja-color { margin: 0 0 18px; text-align: center; }
+.ja-color__label { margin: 0 0 8px; color: var(--ja-muted); font-size: 13px; }
+.ja-color__name { display: inline-block; color: var(--ja-ink); font-weight: 700; will-change: transform, opacity, filter; }
+.seg { position: relative; display: flex; padding: 4px; border-radius: 16px; background: #efe5d8; }
+.seg button {
+  position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  height: 42px; border: 0; border-radius: 12px; background: none; color: var(--ja-muted);
+  font-size: 14px; font-weight: 700; letter-spacing: .04em; transition: color .25s;
+}
+.seg button[aria-checked="true"] { color: #fff; }
+.seg button[aria-checked="false"]:hover { color: var(--ja-ink); }
+.seg button, .jelly__rail { -webkit-tap-highlight-color: transparent; }
+.seg button:focus-visible { outline: 2px solid var(--ja-accent); outline-offset: 2px; }
+.seg__hl { position: absolute; left: 0; top: 4px; height: 42px; border-radius: 12px; background: var(--ja-ink); box-shadow: 0 2px 8px rgba(42,38,34,.18); will-change: transform; }
+.swatch { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55), 0 0 0 1px rgba(0,0,0,.12); }
+.swatch--black { background: #2a2622; }
+.swatch--steel { background: linear-gradient(135deg, #d6dade 0%, #9aa2a8 55%, #7b8389 100%); }
+
+/* Cart buttons (Loading to success): the pill closes into a spinner, then opens green with a check */
+.ja-cta.cta-motion { --sh: 4px; position: relative; overflow: visible; background: none; box-shadow: none; -webkit-tap-highlight-color: transparent; }
+.ja-sticky .ja-cta.cta-motion { --sh: 3px; }
+.ja-cta.cta-motion:active { --sh: 2px; box-shadow: none; }
+/* The pill narrows with transform: scaleX only (no layout work per frame). motion.js sets the
+   horizontal corner radius to the inverse of the scale, so the ends stay round at any width. */
+.cta__bg {
+  --g: 0%;
+  position: absolute; inset: 0; border-radius: 999px;
+  background: color-mix(in srgb, var(--ja-ok) var(--g), var(--ja-cta));
+  box-shadow: 0 var(--sh) 0 color-mix(in srgb, var(--ja-ok-shadow) var(--g), var(--ja-cta-shadow));
+  will-change: transform;
+}
+.cta-motion:hover .cta__bg { filter: brightness(1.08); }
+.cta__txt { position: relative; display: block; will-change: transform, opacity; }
+.cta__done {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6px;
+  white-space: nowrap; letter-spacing: .04em; opacity: 0; will-change: transform, opacity;
+}
+.cta__done svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.cta__spin {
+  position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(255,255,255,0) 0 10%, #fff 85%, rgba(255,255,255,0) 85%);
+  -webkit-mask: radial-gradient(circle closest-side, transparent 66%, #000 70%); mask: radial-gradient(circle closest-side, transparent 66%, #000 70%);
+  opacity: 0; will-change: transform, opacity;
+}
+
 .ja-sec { padding: 44px 20px; }
 .ja-sec + .ja-sec { border-top: 1px solid var(--ja-border); }
 .ja-sec h2 { margin: 0 0 22px; font-family: "Noto Serif JP", serif; font-size: 24px; line-height: 1.5; text-align: center; }
-.ja-h2-sub { display: block; color: var(--ja-accent); font-family: "Noto Sans JP", sans-serif; font-size: 15px; font-weight: 700; }
+.ja-h2-sub { display: block; color: var(--ja-accent-text); font-family: "Noto Sans JP", sans-serif; font-size: 15px; font-weight: 700; }
 
 .ja-problem { background: var(--ja-paper); }
 .ja-checks { display: grid; gap: 10px; margin: 0 0 20px; padding: 0; list-style: none; }
@@ -254,13 +309,49 @@ body[data-view="literal"] .has-pin {
   border-radius: 5px; background: var(--ja-accent); color: #fff; font-size: 12px; line-height: 20px; text-align: center;
 }
 .ja-bridge { margin: 0; font-weight: 500; text-align: center; }
-.ja-bridge strong { color: var(--ja-accent); background: linear-gradient(transparent 62%, #ffe3a3 62%); }
+.ja-bridge strong { color: var(--ja-accent-text); background: linear-gradient(transparent 62%, #ffe3a3 62%); }
 
 .ja-reasons { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
 .ja-reasons li { padding: 18px; border: 1px solid var(--ja-border); border-radius: 16px; background: #fff; }
 .ja-reason__no { display: block; margin-bottom: 6px; color: var(--ja-accent); font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 700; line-height: 1; }
 .ja-reasons h3 { margin: 0 0 6px; font-size: 18px; line-height: 1.5; }
 .ja-reasons p { margin: 0; color: #4a433c; font-size: 15px; }
+
+/* Temperature slider (Jelly slider): the thumb stretches with speed and a value drop rises out of it */
+.ja-try { background: var(--ja-paper); }
+.temp { padding: 20px 20px 18px; border: 1px solid var(--ja-border); border-radius: 18px; background: #fff; }
+.temp__read { margin: 0; text-align: center; line-height: 1; }
+.temp__num { font-family: Inter, sans-serif; font-size: 56px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.temp__unit { margin-left: 2px; color: var(--ja-accent); font-size: 24px; font-weight: 700; }
+.temp__hint { height: 26px; margin: 8px 0 44px; color: var(--ja-accent); font-size: 15px; font-weight: 700; text-align: center; }
+.temp__hint-in { display: inline-block; will-change: transform, opacity, filter; }
+.jelly { -webkit-user-select: none; user-select: none; }
+.jelly__rail { position: relative; height: 32px; touch-action: none; cursor: pointer; }
+.jelly__track { position: absolute; left: 0; right: 0; top: 13px; height: 6px; overflow: hidden; border-radius: 999px; background: #eadfce; }
+.jelly__fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 999px; background: var(--ja-accent); }
+.jelly__goo { position: absolute; left: -40px; right: -40px; top: -80px; height: 140px; filter: url(#goo); pointer-events: none; }
+.jelly__blob { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--ja-accent); will-change: transform; }
+.jelly__drop { width: 36px; height: 36px; }
+.jelly__thumb { width: 28px; height: 28px; }
+.jelly__label {
+  position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 36px; height: 36px;
+  color: #fff; font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0;
+  opacity: 0; pointer-events: none; will-change: transform, opacity;
+}
+.jelly__hit { position: absolute; top: 4px; left: 0; width: 24px; height: 24px; border-radius: 50%; outline: none; }
+.jelly__hit:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--ja-accent); }
+.jelly__ticks { margin-top: 8px; }
+.jelly__marks { position: relative; height: 8px; }
+.jelly__marks i {
+  position: absolute; top: 0; left: calc(12px + (100% - 24px) * var(--p, 0)); width: 1.5px; height: 4px; margin-left: -.75px;
+  border-radius: 1px; background: #e2d6c5; transition: background .2s ease;
+}
+.jelly__marks i.major { height: 8px; background: #b9ab98; }
+.jelly__marks i.on { background: #d6a27f; }
+.jelly__marks i.major.on { background: var(--ja-accent); }
+.jelly__nums { position: relative; height: 14px; margin-top: 6px; color: #7a7065; font-family: Inter, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.jelly__nums span { position: absolute; top: 0; left: calc(12px + (100% - 24px) * var(--p, 0)); transform: translateX(-50%); transition: color .2s ease; }
+.jelly__nums span.on { color: var(--ja-ink); }
 
 .ja-steps__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; padding: 0; list-style: none; text-align: center; }
 .ja-steps__list li { padding: 14px 4px; border-radius: 12px; background: var(--ja-paper); font-size: 13.5px; font-weight: 500; line-height: 1.5; letter-spacing: .02em; }
@@ -277,7 +368,7 @@ body[data-view="literal"] .has-pin {
 
 .ja-rating { margin: -8px 0 18px; text-align: center; }
 .ja-rating b { font-family: Inter, sans-serif; font-size: 20px; }
-.stars, .r-stars { color: #e3a032; letter-spacing: .06em; }
+.stars, .r-stars { color: #b97d16; letter-spacing: .06em; } /* 3.5:1, enough for a graphic next to the number */
 .ja-review-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
 .ja-review-list li { padding: 16px; border: 1px solid var(--ja-border); border-radius: 14px; background: #fff; }
 .ja-review-list h3 { margin: 2px 0 6px; font-size: 16px; line-height: 1.5; }
@@ -311,6 +402,7 @@ body[data-view="literal"] .has-pin {
 .ja-line { padding: 18px; border: 1px solid var(--ja-border); border-radius: 16px; background: #fff; }
 .ja-line p { margin: 0; font-size: 14px; }
 .ja-line__btn { display: block; width: 100%; margin: 10px 0 8px; padding: 13px; border: 0; border-radius: 999px; background: var(--ja-line); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: .06em; }
+.ja-line__btn:hover { filter: brightness(1.08); }
 .ja-line .ja-line__note { color: var(--ja-muted); font-size: 12.5px; }
 
 .ja-footer { padding: 28px 20px; background: var(--ja-ink); color: #d9d1c6; font-size: 13px; }
@@ -320,7 +412,7 @@ body[data-view="literal"] .has-pin {
 .ja-tokusho th, .ja-tokusho td { padding: 8px 16px; border-top: 1px solid rgba(255,255,255,.1); text-align: left; vertical-align: top; }
 .ja-tokusho th { width: 8.5em; color: #fff; font-weight: 500; }
 .ja-footer__links { margin: 0 0 6px; }
-.ja-footer__links a { color: #d9d1c6; text-decoration: none; }
+.ja-footer__links a { display: inline-block; padding: 3px 0; color: #d9d1c6; text-decoration: none; }
 .ja-copy { margin: 0; color: #a59b8f; font-size: 12px; }
 
 .ja-sticky {
@@ -335,6 +427,12 @@ body[data-view="literal"] .has-pin {
 /* ============ Kettle illustration ============ */
 .kettle--en { --k-body: #1f2a33; --k-base: #2c3943; --k-accent: #c07a4a; --k-water: #7fb8de; }
 .kettle--ja { --k-body: #2a2622; --k-base: #3a342e; --k-accent: #b06a3e; --k-water: #7fb8de; }
+/* registered so the color switch can fade the kettle from one finish to the other */
+@property --k-body { syntax: "<color>"; inherits: true; initial-value: #2a2622; }
+@property --k-base { syntax: "<color>"; inherits: true; initial-value: #3a342e; }
+@property --k-accent { syntax: "<color>"; inherits: true; initial-value: #b06a3e; }
+.ja-hero .kettle--ja { transition: --k-body .45s ease, --k-base .45s ease, --k-accent .45s ease; will-change: transform; }
+.ja-hero .kettle--ja[data-color="steel"] { --k-body: #a3abb1; --k-base: #7f878d; --k-accent: #8a5a3a; }
 .kettle__temp { fill: #ffb46b; font: 600 11.5px/1 Inter, "Noto Sans JP", sans-serif; letter-spacing: .04em; }
 
 /* ============ About ============ */

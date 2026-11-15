@@ -18,4 +18,9 @@ Plain HTML, CSS and JavaScript: no build step, no dependencies, no tracking. Fon
 index.html   pages for all three steps
 styles.css   styles
 app.js       version switching, numbered pins and notes
+motion.js    spring motion on the Japanese page: color switch, temperature slider, cart buttons
 ```
+
+## Motion
+
+The color switch, the temperature slider and the cart buttons on the Japanese page are rebuilt from three of the [DesignBookmark Motion](https://designbookmark.com/motion) studies (Segmented control, Jelly slider, Loading to success). The code is our own, in this page's colors and type; the spring stiffness and damping values are the same as the originals. With `prefers-reduced-motion: reduce`, every spring becomes critically damped and the squash and stretch is turned off.

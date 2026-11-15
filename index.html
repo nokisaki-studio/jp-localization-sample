@@ -30,13 +30,19 @@
     <rect x="202" y="139" width="16" height="15" rx="5" style="fill:var(--k-accent)"/>
     <path d="M196 120 c-9 -12 9 -20 0 -32 M222 116 c-9 -12 9 -20 0 -32" style="fill:none;stroke:rgba(120,110,100,.35);stroke-width:3;stroke-linecap:round"/>
   </symbol>
+  <!-- goo: the slider thumb and its value drop fuse into one liquid shape -->
+  <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="b"/>
+    <feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="g"/>
+    <feComposite in="SourceGraphic" in2="g" operator="atop"/>
+  </filter>
 </svg>
 
 <header class="demo-bar">
   <div class="demo-bar__inner">
     <div class="demo-title">
       <strong>Translation vs. Localization</strong>
-      <span>Japanese landing page sample · fictional brand · by <span class="author">Nokisaki Studio</span></span>
+      <span>A Japanese landing page sample for a fictional brand, by <span class="author" translate="no">Nokisaki Studio</span></span>
     </div>
     <div class="view-switch" role="group" aria-label="Choose a version">
       <button type="button" data-view="original" aria-pressed="true"><span class="num">1</span><span class="l-long">English original</span><span class="l-short">Original</span></button>
@@ -46,9 +52,9 @@
     <button class="notes-toggle" type="button" aria-controls="notes" aria-expanded="true">Notes <span class="notes-count"></span></button>
   </div>
   <div class="view-caption" aria-live="polite">
-    <p data-caption="original"><span><b>Step 1.</b> The US original: short, punchy, image-led.</span> <button type="button" class="next" data-go="literal">Next: translate it faithfully →</button></p>
-    <p data-caption="literal" hidden><span><b>Step 2.</b> Every sentence is correctly translated, yet this page would underperform in Japan. <span class="key key--lit">Red pins</span> show why.</span> <button type="button" class="next" data-go="localized">Next: localize it →</button></p>
-    <p data-caption="localized" hidden><span><b>Step 3.</b> Rebuilt for Japanese buyers. <span class="key key--ja">Blue pins</span> explain each change.</span> <button type="button" class="next" data-go="original">Start over ↺</button></p>
+    <p data-caption="original"><span><b>Step 1.</b> The US original: short, punchy, image-led.</span> <button type="button" class="next" data-go="literal">Next: translate it faithfully</button></p>
+    <p data-caption="literal" hidden><span><b>Step 2.</b> Every sentence is correctly translated, yet this page would underperform in Japan. <span class="key key--lit">Red pins</span> show why.</span> <button type="button" class="next" data-go="localized">Next: localize it</button></p>
+    <p data-caption="localized" hidden><span><b>Step 3.</b> Rebuilt for Japanese buyers. <span class="key key--ja">Blue pins</span> explain each change.</span> <button type="button" class="next" data-go="original">Start over</button></p>
   </div>
 </header>
 
@@ -60,7 +66,7 @@
       <div class="en-announce" data-lit="50ドル以上のご注文で送料無料・30日間返品可能">Free shipping on orders over $50 · 30-day returns</div>
 
       <nav class="en-nav" aria-label="Store">
-        <span class="en-logo">TIDEWELL</span>
+        <span class="en-logo" translate="no">TIDEWELL</span>
         <span class="en-links">
           <a href="#" data-demo data-lit="ショップ">Shop</a>
           <a href="#" data-demo data-lit="ブランドストーリー">Our story</a>
@@ -127,7 +133,7 @@
       </section>
 
       <footer class="en-footer" data-pin="lit-footer">
-        <span>© 2026 Tidewell Coffee Co.</span>
+        <span>© 2026 <span translate="no">Tidewell Coffee Co.</span></span>
         <span><a href="#" data-demo data-lit="プライバシー">Privacy</a> · <a href="#" data-demo data-lit="利用規約">Terms</a></span>
       </footer>
     </article>
@@ -142,7 +148,7 @@
         </div>
 
         <header class="ja-header">
-          <span class="ja-logo">TIDEWELL<small>タイドウェル</small></span>
+          <span class="ja-logo" translate="no">TIDEWELL<small>タイドウェル</small></span>
           <button type="button" class="ja-cart" data-demo>カート</button>
         </header>
 
@@ -156,13 +162,21 @@
               <text x="210" y="340.5" text-anchor="middle" class="kettle__temp">93℃</text>
             </svg>
           </div>
+          <div class="ja-color">
+            <p class="ja-color__label">カラー：<b class="ja-color__name">マットブラック</b></p>
+            <div class="seg" role="radiogroup" aria-label="カラー">
+              <span class="seg__hl" aria-hidden="true"></span>
+              <button type="button" role="radio" aria-checked="true" data-color="black" data-name="マットブラック"><i class="swatch swatch--black" aria-hidden="true"></i>マットブラック</button>
+              <button type="button" role="radio" aria-checked="false" data-color="steel" data-name="ステンレス"><i class="swatch swatch--steel" aria-hidden="true"></i>ステンレス</button>
+            </div>
+          </div>
           <ul class="ja-badges" data-pin="ja-pse">
             <li>AC100V<br>PSE適合</li>
             <li>1年保証<br>国内サポート</li>
             <li>30日間<br>返品OK</li>
           </ul>
           <div class="ja-buy" data-pin="ja-price">
-            <p class="ja-buy__name">Tidewell Pour 電気ケトル 0.9L</p>
+            <p class="ja-buy__name"><span translate="no">Tidewell Pour</span> 電気ケトル 0.9L</p>
             <p class="ja-buy__price"><span class="yen">19,800</span>円<small>（税込）</small></p>
             <p class="ja-buy__ship">送料無料・最短翌日お届け</p>
             <button type="button" class="ja-cta" data-demo>カートに入れる</button>
@@ -183,7 +197,7 @@
         </section>
 
         <section class="ja-sec ja-features">
-          <h2 data-pin="ja-detail"><span class="ja-h2-sub">Tidewell Pourが選ばれる</span>3つの理由</h2>
+          <h2 data-pin="ja-detail"><span class="ja-h2-sub"><span translate="no">Tidewell Pour</span>が選ばれる</span>3つの理由</h2>
           <ol class="ja-reasons">
             <li>
               <span class="ja-reason__no">01</span>
@@ -203,6 +217,27 @@
           </ol>
         </section>
 
+        <section class="ja-sec ja-try">
+          <h2 data-pin="ja-try"><span class="ja-h2-sub">さわって試せます</span>豆に合わせて、<br>温度を選ぶ</h2>
+          <div class="temp">
+            <p class="temp__read"><span class="temp__num">93</span><span class="temp__unit">℃</span></p>
+            <p class="temp__hint"><span class="temp__hint-in">浅煎りの豆に。香りが華やかに</span></p>
+            <div class="jelly">
+              <div class="jelly__rail">
+                <div class="jelly__track"><div class="jelly__fill"></div></div>
+                <div class="jelly__goo" aria-hidden="true"><div class="jelly__blob jelly__drop"></div><div class="jelly__blob jelly__thumb"></div></div>
+                <div class="jelly__label" aria-hidden="true">93</div>
+                <div class="jelly__hit" role="slider" tabindex="0" aria-label="お湯の温度" aria-valuemin="60" aria-valuemax="100" aria-valuenow="93" aria-valuetext="93℃、浅煎りの豆に。香りが華やかに"></div>
+              </div>
+              <div class="jelly__ticks" aria-hidden="true">
+                <div class="jelly__marks"></div>
+                <div class="jelly__nums"><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="ja-note">※温度は目安です。お好みに合わせて1℃ずつ調整できます。</p>
+        </section>
+
         <section class="ja-sec ja-steps">
           <h2>使い方は、かんたん3ステップ</h2>
           <ol class="ja-steps__list">
@@ -217,7 +252,7 @@
           <div class="ja-table-wrap">
             <table>
               <thead>
-                <tr><th scope="col"><span class="sr">項目</span></th><th scope="col" class="is-us">Tidewell<br>Pour</th><th scope="col">一般的な<br>電気ケトル</th><th scope="col">やかん</th></tr>
+                <tr><th scope="col"><span class="sr">項目</span></th><th scope="col" class="is-us" translate="no">Tidewell<br>Pour</th><th scope="col">一般的な<br>電気ケトル</th><th scope="col">やかん</th></tr>
               </thead>
               <tbody>
                 <tr><th scope="row">温度設定</th><td class="is-us">◎<br>1℃単位</td><td>×<br>沸騰のみ</td><td>×</td></tr>
@@ -309,7 +344,7 @@
         <section class="ja-sec ja-final">
           <h2>毎日の一杯を、<br>もう一段おいしく。</h2>
           <div class="ja-buy ja-buy--final">
-            <p class="ja-buy__name">Tidewell Pour 電気ケトル 0.9L</p>
+            <p class="ja-buy__name"><span translate="no">Tidewell Pour</span> 電気ケトル 0.9L</p>
             <p class="ja-buy__price"><span class="yen">19,800</span>円<small>（税込）</small></p>
             <p class="ja-buy__ship">送料無料・最短翌日お届け</p>
             <button type="button" class="ja-cta" data-demo>カートに入れる</button>
@@ -338,7 +373,7 @@
             </table>
           </details>
           <p class="ja-footer__links"><a href="#" data-demo>会社概要</a>｜<a href="#" data-demo>プライバシーポリシー</a></p>
-          <p class="ja-copy">© 2026 Tidewell Coffee Co.（架空のブランドです）</p>
+          <p class="ja-copy">© 2026 <span translate="no">Tidewell Coffee Co.</span>（架空のブランドです）</p>
         </footer>
 
         <div class="ja-sticky">
@@ -352,6 +387,7 @@
       <h2>About this sample</h2>
       <p>Tidewell is a fictional brand, made up to show the difference between translating a landing page and localizing it for Japan. Nothing is sold here, and the buttons do nothing.</p>
       <p>Hand-built in plain HTML, CSS and JavaScript: no framework, no tracking. The Japanese copy was drafted with AI assistance under the direction of a native Japanese speaker.</p>
+      <p>The color switch, the temperature slider and the cart buttons on the Japanese page move on springs, rebuilt from the <a href="https://designbookmark.com/motion" rel="noopener">DesignBookmark Motion</a> studies with the same spring values. They work with a keyboard and calm down when the visitor asks for reduced motion.</p>
     </section>
   </main>
 
@@ -368,5 +404,6 @@
 <div class="toast" role="status" hidden></div>
 
 <script src="app.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>
